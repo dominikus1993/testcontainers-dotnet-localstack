@@ -25,8 +25,29 @@ public sealed class LocalStackContainer: DockerContainer
     /// Gets the Minio Url.
     /// </summary>
     /// <returns>The Minio Url.</returns>
-    public string GetLocalStackUrl()
+    public string GetEndpoint()
     {
         return new UriBuilder(Uri.UriSchemeHttp, Hostname, GetMappedPublicPort(LocalStackBuilder.LocalStackPort)).ToString();
     }
+    
+    /// <summary>
+    /// Gets the Minio Url.
+    /// </summary>
+    /// <returns>The Minio Url.</returns>
+    public string GetDefaultRegion()
+    {
+        return _configuration.DefaultRegion!;
+    }
+    
+    /// <summary>
+    /// Gets the Minio Url.
+    /// </summary>
+    /// <returns>The Minio Url.</returns>
+    public string GetAccessKeyId() => "dummy";
+
+    /// <summary>
+    /// Gets the Minio Url.
+    /// </summary>
+    /// <returns>The Minio Url.</returns>
+    public string GetAccessSecretKey() => "dummy";
 }

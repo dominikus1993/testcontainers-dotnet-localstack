@@ -12,14 +12,23 @@ public sealed class LocalstackConfiguration : ContainerConfiguration
 {
     
     public IEnumerable<IAwsService>? Services { get; }
+    public string? DefaultRegion { get; }
+    public string? ExternalServicePortStart { get; }
+    public string? ExternalServicePortEnd { get; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LocalstackConfiguration" /> class.
     /// </summary>
     /// <param name="services">The LocalStack services list.</param>
-    public LocalstackConfiguration(IEnumerable<IAwsService>? services = null) : base()
+    /// <param name="defaultRegion">The LocalStack services list.</param>
+    /// <param name="externalServicePortStart">The LocalStack services list.</param>
+    /// <param name="externalServicePortEnd">The LocalStack services list.</param>
+    public LocalstackConfiguration(IEnumerable<IAwsService>? services = null, string? defaultRegion = null, string? externalServicePortStart = null, string? externalServicePortEnd = null) : base()
     {
         Services = services;
+        DefaultRegion = defaultRegion;
+        ExternalServicePortStart = externalServicePortStart;
+        ExternalServicePortEnd = externalServicePortEnd;
     }
 
     /// <summary>
@@ -61,5 +70,8 @@ public sealed class LocalstackConfiguration : ContainerConfiguration
         : base(oldValue, newValue)
     {
         Services = BuildConfiguration.Combine(oldValue.Services, newValue.Services);
+        DefaultRegion = BuildConfiguration.Combine(oldValue.DefaultRegion, newValue.DefaultRegion);
+        ExternalServicePortStart = BuildConfiguration.Combine(oldValue.ExternalServicePortStart, newValue.ExternalServicePortStart);
+        ExternalServicePortEnd = BuildConfiguration.Combine(oldValue.ExternalServicePortEnd, newValue.ExternalServicePortEnd);
     }
 }
