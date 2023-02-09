@@ -2,6 +2,24 @@
   "version": 2,
   "dependencies": {
     "net6.0": {
+      "AWSSDK.DynamoDBv2": {
+        "type": "Direct",
+        "requested": "[3.7.101.41, )",
+        "resolved": "3.7.101.41",
+        "contentHash": "Er2BPIr7iedSW+Xmret66EF2KaTt99MmoebABSTL7V0Bhcih9W43yA0SjNLSZIKtpwOXSjPHGk166dz6LHZzRA==",
+        "dependencies": {
+          "AWSSDK.Core": "[3.7.104.5, 4.0.0)"
+        }
+      },
+      "AWSSDK.S3": {
+        "type": "Direct",
+        "requested": "[3.7.103.2, )",
+        "resolved": "3.7.103.2",
+        "contentHash": "SGO7O93uERU0eEfsQk1GEVz/7/9T3X5kXRRlR6ls7OLzPHdLK3PKlh2Ci15CrruZkCwfPlT2Dryl8HgDWiAxoQ==",
+        "dependencies": {
+          "AWSSDK.Core": "[3.7.104.2, 4.0.0)"
+        }
+      },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
         "requested": "[17.4.1, )",
@@ -38,6 +56,11 @@
         "requested": "[2.4.5, )",
         "resolved": "2.4.5",
         "contentHash": "OwHamvBdUKgqsXfBzWiCW/O98BTx81UKzx2bieIOQI7CZFE5NEQZGi8PBQGIKawDW96xeRffiNf20SjfC0x9hw=="
+      },
+      "AWSSDK.Core": {
+        "type": "Transitive",
+        "resolved": "3.7.104.5",
+        "contentHash": "XeFQ44YyeZnv4iFHFwDD9UCNbJY1O7HQKqgGXBLKtZ9EXQQr3GHTXw99aBmEJsYG8q00O34YGTPeyxPNPbpC0A=="
       },
       "Docker.DotNet": {
         "type": "Transitive",
@@ -1110,6 +1133,24 @@
       }
     },
     "net7.0": {
+      "AWSSDK.DynamoDBv2": {
+        "type": "Direct",
+        "requested": "[3.7.101.41, )",
+        "resolved": "3.7.101.41",
+        "contentHash": "Er2BPIr7iedSW+Xmret66EF2KaTt99MmoebABSTL7V0Bhcih9W43yA0SjNLSZIKtpwOXSjPHGk166dz6LHZzRA==",
+        "dependencies": {
+          "AWSSDK.Core": "[3.7.104.5, 4.0.0)"
+        }
+      },
+      "AWSSDK.S3": {
+        "type": "Direct",
+        "requested": "[3.7.103.2, )",
+        "resolved": "3.7.103.2",
+        "contentHash": "SGO7O93uERU0eEfsQk1GEVz/7/9T3X5kXRRlR6ls7OLzPHdLK3PKlh2Ci15CrruZkCwfPlT2Dryl8HgDWiAxoQ==",
+        "dependencies": {
+          "AWSSDK.Core": "[3.7.104.2, 4.0.0)"
+        }
+      },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
         "requested": "[17.4.1, )",
@@ -1146,6 +1187,11 @@
         "requested": "[2.4.5, )",
         "resolved": "2.4.5",
         "contentHash": "OwHamvBdUKgqsXfBzWiCW/O98BTx81UKzx2bieIOQI7CZFE5NEQZGi8PBQGIKawDW96xeRffiNf20SjfC0x9hw=="
+      },
+      "AWSSDK.Core": {
+        "type": "Transitive",
+        "resolved": "3.7.104.5",
+        "contentHash": "XeFQ44YyeZnv4iFHFwDD9UCNbJY1O7HQKqgGXBLKtZ9EXQQr3GHTXw99aBmEJsYG8q00O34YGTPeyxPNPbpC0A=="
       },
       "Docker.DotNet": {
         "type": "Transitive",
