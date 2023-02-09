@@ -1,0 +1,34 @@
+﻿<Project>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <Copyright>Copyright © 2020 Your Company</Copyright>
+        <Authors>Your Authors</Authors>
+        <VersionPrefix>7.7.0</VersionPrefix>
+        <PackageReleaseNotes>• Small fixes</PackageReleaseNotes>
+        <PackageIconUrl>
+        </PackageIconUrl>
+        <PackageProjectUrl>
+        </PackageProjectUrl>
+        <PackageLicenseUrl>
+        </PackageLicenseUrl>
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <!-- SourceLink support for all Akka.NET projects -->
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" />
+        <None Include="$(MSBuildThisFileDirectory)\..\README.md" Pack="true" Visible="false" PackagePath="\" />
+    </ItemGroup>
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+</Project>
