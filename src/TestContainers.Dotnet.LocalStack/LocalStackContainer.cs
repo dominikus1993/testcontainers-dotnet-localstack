@@ -9,14 +9,14 @@ namespace TestContainers.Dotnet.LocalStack;
 [PublicAPI]
 public sealed class LocalStackContainer: DockerContainer
 {
-    private readonly LocalstackConfiguration _configuration;
+    private readonly LocalStackConfiguration _configuration;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="LocalStackContainer" /> class.
     /// </summary>
     /// <param name="configuration">The container configuration.</param>
     /// <param name="logger">The logger.</param>
-    public LocalStackContainer(LocalstackConfiguration configuration, ILogger logger) : base(configuration, logger)
+    public LocalStackContainer(LocalStackConfiguration configuration, ILogger logger) : base(configuration, logger)
     {
         _configuration = configuration;
     }

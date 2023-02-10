@@ -11,19 +11,19 @@ namespace TestContainers.Dotnet.LocalStack;
 
 /// <inheritdoc cref="ContainerBuilder" />
 [PublicAPI]
-public sealed class LocalStackBuilder : ContainerBuilder<LocalStackBuilder, LocalStackContainer, LocalstackConfiguration>
+public sealed class LocalStackBuilder : ContainerBuilder<LocalStackBuilder, LocalStackContainer, LocalStackConfiguration>
 {
     public const ushort LocalStackPort = 4566;
-    public const string LocalStackImage = "localstack/localstack:1.2.0";
+    public const string LocalStackImage = "localstack/localstack:1.3.1";
 
-    protected override LocalstackConfiguration DockerResourceConfiguration { get; }
+    protected override LocalStackConfiguration DockerResourceConfiguration { get; }
 
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LocalStackBuilder" /> class.
     /// </summary>
     public LocalStackBuilder()
-        : this(new LocalstackConfiguration())
+        : this(new LocalStackConfiguration())
     {
         DockerResourceConfiguration = Init().DockerResourceConfiguration;
     }
@@ -32,7 +32,7 @@ public sealed class LocalStackBuilder : ContainerBuilder<LocalStackBuilder, Loca
     /// Initializes a new instance of the <see cref="LocalStackBuilder" /> class.
     /// </summary>
     /// <param name="dockerResourceConfiguration">The Docker resource configuration.</param>
-    private LocalStackBuilder(LocalstackConfiguration dockerResourceConfiguration) : base(dockerResourceConfiguration)
+    private LocalStackBuilder(LocalStackConfiguration dockerResourceConfiguration) : base(dockerResourceConfiguration)
     {
         DockerResourceConfiguration = dockerResourceConfiguration;
     }
@@ -49,21 +49,10 @@ public sealed class LocalStackBuilder : ContainerBuilder<LocalStackBuilder, Loca
             return this;
         }
 
-        return Merge(DockerResourceConfiguration, new LocalstackConfiguration(services: services))
-            .WithEnvironment("SERVICES", string.Join(',', services.Select(service => service.Name)))
-            .WithExposedPorts(services);
+        return Merge(DockerResourceConfiguration, new LocalStackConfiguration(services: services))
+            .WithEnvironment("SERVICES", string.Join(',', services.Select(service => service.Name)));
     }
-    
-    /// <summary>
-    /// Sets the Minio username.
-    /// </summary>
-    /// <param name="services">The LocalStack services.</param>
-    /// <returns>A configured instance of <see cref="LocalStackBuilder" />.</returns>
-    private LocalStackBuilder WithExposedPorts(IAwsService[] services)
-    {
-        return services.Aggregate(this, (builder, service) => builder.WithExposedPort(service.Port));
-    } 
-    
+
     /// <summary>
     /// Sets the Minio username.
     /// </summary>
@@ -71,7 +60,7 @@ public sealed class LocalStackBuilder : ContainerBuilder<LocalStackBuilder, Loca
     /// <returns>A configured instance of <see cref="LocalStackBuilder" />.</returns>
     public LocalStackBuilder WithDefaultRegion(string defaultRegion)
     {
-        return Merge(DockerResourceConfiguration, new LocalstackConfiguration(defaultRegion: defaultRegion))
+        return Merge(DockerResourceConfiguration, new LocalStackConfiguration(defaultRegion: defaultRegion))
             .WithEnvironment("DEFAULT_REGION", defaultRegion);
     }
     
@@ -82,7 +71,7 @@ public sealed class LocalStackBuilder : ContainerBuilder<LocalStackBuilder, Loca
     /// <returns>A configured instance of <see cref="LocalStackBuilder" />.</returns>
     public LocalStackBuilder WithExternalServicePortStart(string port)
     {
-        return Merge(DockerResourceConfiguration, new LocalstackConfiguration(externalServicePortStart: port))
+        return Merge(DockerResourceConfiguration, new LocalStackConfiguration(externalServicePortStart: port))
             .WithEnvironment("EXTERNAL_SERVICE_PORTS_START", port);
     }
     
@@ -93,7 +82,7 @@ public sealed class LocalStackBuilder : ContainerBuilder<LocalStackBuilder, Loca
     /// <returns>A configured instance of <see cref="LocalStackBuilder" />.</returns>
     public LocalStackBuilder WithExternalServicePortEnd(string port)
     {
-        return Merge(DockerResourceConfiguration, new LocalstackConfiguration(externalServicePortEnd: port))
+        return Merge(DockerResourceConfiguration, new LocalStackConfiguration(externalServicePortEnd: port))
             .WithEnvironment("EXTERNAL_SERVICE_PORTS_END", port);
     }
 
@@ -127,19 +116,19 @@ public sealed class LocalStackBuilder : ContainerBuilder<LocalStackBuilder, Loca
             .NotNull();
     }
 
-    protected override LocalStackBuilder Merge(LocalstackConfiguration oldValue, LocalstackConfiguration newValue)
+    protected override LocalStackBuilder Merge(LocalStackConfiguration oldValue, LocalStackConfiguration newValue)
     {
-        return new LocalStackBuilder(new LocalstackConfiguration(oldValue, newValue));
+        return new LocalStackBuilder(new LocalStackConfiguration(oldValue, newValue));
     }
 
     protected override LocalStackBuilder Clone(IContainerConfiguration resourceConfiguration)
     {
-        return Merge(DockerResourceConfiguration, new LocalstackConfiguration(resourceConfiguration));
+        return Merge(DockerResourceConfiguration, new LocalStackConfiguration(resourceConfiguration));
     }
 
     protected override LocalStackBuilder Clone(IResourceConfiguration<CreateContainerParameters> resourceConfiguration)
     {
-        return Merge(DockerResourceConfiguration, new LocalstackConfiguration(resourceConfiguration));
+        return Merge(DockerResourceConfiguration, new LocalStackConfiguration(resourceConfiguration));
     }
     
     private sealed class UntilReady : IWaitUntil

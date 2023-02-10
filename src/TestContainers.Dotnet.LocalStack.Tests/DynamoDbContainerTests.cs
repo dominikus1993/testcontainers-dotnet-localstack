@@ -12,7 +12,7 @@ namespace Testcontainers.DynamoDB;
 
 public sealed class MinioContainerTest : IAsyncLifetime
 {
-  private readonly LocalStackContainer dynamoDbContainer = new LocalStackBuilder().WithServices(AwsService.DynamoDB).Build();
+  private readonly LocalStackContainer dynamoDbContainer = new LocalStackBuilder().WithServices(AwsService.DynamoDb).Build();
 
   public Task InitializeAsync()
   {

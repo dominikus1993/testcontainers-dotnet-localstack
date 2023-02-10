@@ -3,22 +3,24 @@
 public interface IAwsService
 {
     public string Name { get; }
-    public ushort Port { get; }
 }
 
 public sealed class AwsService: IAwsService
 {
     public string Name { get; }
-    public ushort Port { get; }
 
-    private AwsService(string name, ushort port)
+    private AwsService(string name)
     {
         Name = name;
-        Port = port;
     }
 
-    public static readonly AwsService ApiGateway = new("apigateway", 4567);
-    public static readonly AwsService S3 = new("s3", 4572);
-    public static readonly AwsService DynamoDB = new("dynamodb", 4569);
-    public static readonly AwsService Sqs = new("sqs", 4576);
+    public static AwsService Custom(string name) => new(name);
+    public static readonly AwsService ApiGateway = new("apigateway");
+    public static readonly AwsService EC2 = new AwsService("ec2");
+    public static readonly AwsService Kinesis = new AwsService("kinesis");
+    public static readonly AwsService DynamoDb = new("dynamodb");
+    public static readonly AwsService DynamoDbStreams = new("dynamodbstreams");
+    public static readonly AwsService S3 = new("s3");
+    public static readonly AwsService Firehose = new("firehose");
+    public static readonly AwsService Sqs = new("sqs");
 }
