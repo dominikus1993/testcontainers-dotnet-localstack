@@ -4,7 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="AWSSDK.CloudWatchLogs" Version="3.7.104.15" />
-    <PackageVersion Include="AWSSDK.DynamoDBv2" Version="3.7.101.41" />
+    <PackageVersion Include="AWSSDK.DynamoDBv2" Version="3.7.101.43" />
     <PackageVersion Include="AWSSDK.S3" Version="3.7.103.2" />
     <PackageVersion Include="AWSSDK.SimpleNotificationService" Version="3.7.101.8" />
     <PackageVersion Include="AWSSDK.SQS" Version="3.7.100.72" />
